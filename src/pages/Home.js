@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import useFetch from '../hooks/useFetch';
 import Search from '../components/Search';
 
@@ -13,10 +13,10 @@ function Home() {
             <Search setCoin={setCoin} />
             {!data && <p>Loading...</p>}
             <ul className="coin-list">
-                {data && data.map(coin => {
+                {data && data.map(coinValue => {
                     return (
-                        <li className="coin" key={`${coin.id}`}>
-                            <p className="symbol">{coin.symbol}</p>
+                        <li className="coin" key={`${coinValue.id}`}>
+                            <p className="symbol">{coinValue.symbol}</p>
                         </li>
                     )
                 })}

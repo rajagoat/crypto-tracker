@@ -1,21 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useFetch from '../hooks/useFetch';
+import Search from '../components/Search';
 
 function Home() {
     const API = `https://api.coingecko.com/api/v3/coins/list`;
     const { data } = useFetch(API);
-
-    if (data) {
-        data.map(coin => {
-            console.log(coin.symbol);
-            return coin;
-        })
-    }
+    const [coin, setCoin] = useState('');
+    const [showModal, setShowModal] = useState(false);
 
     return (
-        <div>
+        <div className="home">
+            <Search setCoin={setCoin} />
+            {!data && <p>Loading...</p>}
             <ul className="coin-list">
-                
+                {data && data.map(coin => {
+                    return (
+                        <li className="coin" key={`${coin.id}`}>
+                            <p className="symbol">{coin.symbol}</p>
+                        </li>
+                    )
+                })}
             </ul>
         </div>
     )

@@ -5,17 +5,17 @@ import Portfolio from "./pages/Portfolio";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 
-function Routes() {
+function Routing() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" exact component={Dashboard}/>
-                <Route path="/portfolio" component={Portfolio}/>
-                <Route path="/page-2" component={Page2}/>
-                <Route component={NotFound}/>
+                <Route exact path="/" element={<Dashboard/>}/>
+                <Route path="/portfolio" element={<Portfolio/>}/>
+                <Route path="/page-2" element={<Page2/>}/>
+                <Route element={<NotFound/>}/>
             </Routes>
         </BrowserRouter>
     )
 }
 
-export default Routes;
+export default Routing;
